@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyAgpU5TcQv5lOmI_U_wXlOryGxH5v9swDI'; // Gemini API Key
+const apiKey = ''; // Gemini API Key
 
 async function aiTutor() {
     const inputField = document.getElementById('prompt');
