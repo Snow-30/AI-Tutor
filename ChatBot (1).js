@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const sendInput = document.getElementById("sendInput");
     sendInput.addEventListener("click", async () => {
         const userPrompt = document.getElementById("prompt").value;
-        const apiKey = 'AIzaSyAgpU5TcQv5lOmI_U_wXlOryGxH5v9swDI';
+        const apiKey = '';//Enter Gemini's API Key
 
         try {
             const response = await fetch(
