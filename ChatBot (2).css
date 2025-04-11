@@ -1,0 +1,153 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 26px; 
+    margin-top: 30px;
+}
+p{
+    text-align: center;
+    color: white;
+    font-size: 22px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    background: linear-gradient(to right, #1f0036, #3a0ca3);
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    padding-bottom: 20px; /* Add padding to the bottom */
+}
+.container {
+    display: flex;
+    flex-direction: row; /* Display chatbox and roadmap side by side */
+    justify-content: space-between; /* Space out the chatbox and roadmap */
+    align-items: flex-start; /* Align items at the top */
+    width: 100%; /* Ensure it doesn't exceed the viewport width */
+    max-width: 100vw; /* Prevent overflow beyond the viewport */
+    gap: 20px; /* Space between chatbox and roadmap */
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    flex: 1;
+}
+
+.output-field {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    margin-left: 40px;
+    width: 55vw;
+    height: 600px; /* Match height of roadmap */
+    max-height: 600px;
+    border-radius: 20px;
+    margin-top: 0px;
+    overflow-y: auto;
+    text-align: center; /* Align the output text in the center */
+    margin-bottom: 20px; /* Add space between text and thumbnails */
+}
+.input-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;  
+    margin: 10px;
+    background-color: white;
+    margin-left: 55px; 
+    border: none; 
+    border-radius: 25px;
+    padding: 10px;  
+}
+
+.userInput {
+    width: 100vw;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-top: 0px;
+    height: 38px;
+    border: none; 
+    font-size: 18px;
+    background-color: inherit;
+    border-radius: 25px;
+    text-align: left; /* Align text to the left */
+}
+
+.userInput:focus {
+    outline: none; 
+    box-shadow: none; 
+    background-color: inherit;
+}
+
+.userInput::placeholder {
+    font-size: 18px;
+    padding-left: 5px; 
+}
+
+.send-icon {
+    height: 40px;      
+    border-radius: 25px; 
+    margin-right: 5px; 
+}
+
+
+#roadmapOutput {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center the content */
+    width: 40%; /* Adjust width to ensure it fits alongside the chatbox */
+    height: 600px; /* Match height of chatbox */
+    background-color: white;
+    padding: 20px;
+    margin-top: 50px; /* Ensure it starts at the same height as the chatbox */
+    border-radius: 10px;
+    text-align: center;
+    overflow-y: auto; /* Ensure scrolling if content overflows */
+}
+
+.phase {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+}
+
+.phase-name {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.step {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.arrow {
+    font-size: 24px;
+    margin: 20px 0; 
+    display: block; 
+    text-align: center;
+    transform: rotate(90deg); 
+}
+
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    padding-bottom: 20px;
+}

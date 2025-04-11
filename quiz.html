@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Quiz</title>
+  <link rel="stylesheet" href="./quiz.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>AI Quiz</h1>
+  </header>
+
+  <!-- Main Quiz Container -->
+  <main class="quiz-container">
+    <div class="quiz-card">
+      <h2>AI Tutor Quiz</h2>
+
+      <!-- Topic input -->
+      <input type="text" id="prompt" placeholder="Enter a topic..." style="width: 100%; padding: 10px; margin-bottom: 1rem; border-radius: 8px;" />
+
+      <!-- Generate button -->
+      <button id="generate-tutor">Generate Quiz</button>
+
+      <!-- Quiz output will go here -->
+      <div id="response" style="margin-top: 2rem;"></div>
+    </div>
+  </main>
+
+  <!-- JS Logic -->
+  <script src="./quiz.js"></script>
+</body>
+</html>

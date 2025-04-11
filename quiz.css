@@ -1,0 +1,131 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+}
+
+/* Main container */
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 150px);
+  padding: 2rem;
+}
+
+/* Quiz card styling */
+.quiz-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Input and button */
+.quiz-card input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.quiz-card button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-card button:hover {
+  background-color: #3e8e41;
+  transform: translateY(-2px);
+}
+
+/* Quiz question */
+.quiz-question {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Options */
+.quiz-options {
+  margin-bottom: 1rem;
+}
+
+.quiz-options label {
+  display: block;
+  background-color: #f0f0f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.quiz-options label:hover {
+  background-color: #d6d9f7;
+}
+
+.quiz-options input[type="radio"] {
+  margin-right: 0.6rem;
+  transform: scale(1.2);
+  vertical-align: middle;
+}
+
+/* Feedback */
+#quiz-feedback {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4a4a4a;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+  .quiz-card {
+    padding: 1.5rem;
+  }
+
+  .quiz-card button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+.quiz-completion{
+  display: flex;
+  justify-content: space-around;
+}

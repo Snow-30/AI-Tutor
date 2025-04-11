@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+		<link rel="stylesheet" href="./ChatBot.css" />
+		<style>
+			/* Apply box-sizing to all elements to prevent overflow */
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			/* Body styles */
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				align-items: center;
+				background: linear-gradient(to right, #1f0036, #3a0ca3);
+				overflow-x: hidden; /* Prevent horizontal overflow */
+				padding-bottom: 20px; /* Add padding to the bottom */
+			}
+
+			/* Ensure that the container doesn't exceed the viewport width */
+			.container {
+				display: flex;
+				flex-direction: row; /* Display chatbox and roadmap side by side */
+				justify-content: space-between; /* Space out the chatbox and roadmap */
+				align-items: flex-start; /* Align items at the top */
+				width: 100%; /* Ensure it doesn't exceed the viewport width */
+				max-width: 100vw; /* Prevent overflow beyond the viewport */
+				gap: 20px; /* Space between chatbox and roadmap */
+				margin-right: 20px; /* Add margin to the right of the container */
+			}
+
+			/* Chat container */
+			.chat-container {
+				display: flex;
+				flex-direction: column; /* Stack items vertically */
+				justify-content: flex-start;
+				align-items: flex-start;
+				text-align: center;
+				margin-top: 30px;
+				padding: 20px;
+				flex: 1;
+			}
+
+			/* Roadmap container */
+			#roadmapOutput {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center; /* Center the content */
+				width: 40%; /* Adjust width to ensure it fits alongside the chatbox */
+				height: 600px; /* Match height of chatbox */
+				background-color: #fff;
+				padding: 20px;
+				margin-top: 50px; /* Ensure it starts at the same height as the chatbox */
+				margin-right: 20px; /* Add margin to the right of the roadmap */
+				border-radius: 10px;
+				text-align: center;
+				overflow-y: auto; /* Ensure scrolling if content overflows */
+			}
+
+			/* Align the roadmap items */
+			.phase {
+				display: inline-block;
+				text-align: center;
+				margin: 20px;
+			}
+
+			.phase-name {
+				font-weight: bold;
+				font-size: 18px;
+				text-align: center;
+			}
+
+			.step {
+				margin: 10px 0;
+				text-align: center;
+			}
+
+			/* Arrow styling */
+			.arrow {
+				font-size: 24px;
+				margin: 20px 0;
+				display: block;
+				text-align: center;
+				transform: rotate(90deg); /* Rotate arrows to vertical */
+			}
+
+			/* Prevent overflow from happening */
+			body, html {
+				max-width: 100%;
+				overflow-x: hidden;
+			}
+
+			/* Ensure that both chatbox and roadmap align properly */
+			.container {
+				display: flex;
+				flex-direction: row; /* Display chatbox and roadmap side by side */
+				justify-content: space-between;
+				width: 100%;
+				gap: 20px; /* Space between chatbox and roadmap */
+			}
+		</style>
+	</head>
+	<body>
+		<h1><b>Chat Bot</b></h1>
+		<p>
+			Our AI adapts to your learning style, ensuring a
+			personalized experience.
+		</p>
+		<div class="container">
+			<div class="chat-container">
+				<div class="history hidden"></div>
+
+				<div class="output-field" id="output">
+					<div
+						class="text-field"
+						id="textOutput"
+					></div>
+					<div
+						class="image-field"
+						id="imageOutput"
+					></div>
+				</div>
+			</div>
+            <div class="roadmap" id="roadmapOutput">
+                
+            </div>
+		</div>
+		<div class="input-field">
+			<input
+				class="userInput"
+				type="text"
+				id="prompt"
+				placeholder="Type your message here..."
+			/>
+			<div class="send-icon" id="sendInput">
+				<img
+					src="./crate_11915943.png"
+					alt="Send"
+					class="send-icon"
+				/>
+			</div>
+		</div>
+		<script type="module" src="./ChatBot.js"></script>
+		<script>
+			// Function to format AI response for better readability
+			function formatAIResponse(response) {
+				// Bold text properly using <strong> for **text**
+				response = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // This will convert **bold text** into <strong>bold text</strong>
+
+				// Add structure for phases and learning roadmap
+				response = response.replace(/Phase (\d+):/g, '<h3>Phase $1:</h3>'); // Converts Phase X into a heading
+				response = response.replace(/\d+\.\d+/g, (match) => `<p><strong>${match}</strong></p>`); // Make subsection numbers bold
+				response = response.replace(/\d+\./g, (match) => `<p><strong>${match}</strong></p>`); // Make numbered lists bold
+
+				// Properly handle ordered lists (1., 2., 3., etc.) with <ol> and <li>
+				response = response.replace(/(\d+\.)\s/g, '<ol><li>').replace(/\n/g, '</li></ol>'); // Replace number list and add <ol> tags
+
+				// Replace bullet points with <ul> and <li>
+				response = response.replace(/- /g, '<ul><li>').replace(/\n/g, '</li></ul>'); // Convert each line starting with "-" to list items
+
+				return response;
+			}
+
+			// Function to handle sending input and clearing the input field
+			document.getElementById('sendInput').addEventListener('click', async () => {
+				const inputField = document.querySelector('.userInput');
+				const inputValue = inputField.value; // Get the input value
+
+				if (inputValue.trim() !== '') {
+					await aiTutor(); // Call the aiTutor function to process the input
+					inputField.value = ''; // Clear the input field
+				}
+			});
+
+			// Add event listener for Enter key to send input
+			document.querySelector('.userInput').addEventListener('keypress', (e) => {
+				if (e.key === 'Enter') {
+					document.getElementById('sendInput').click(); // Trigger the send button click
+					document.querySelector('.userInput').value = ''; // Clear the input field after sending
+				}
+			});
+		</script>
+	</body>
+</html>

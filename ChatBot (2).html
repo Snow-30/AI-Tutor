@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+		<link rel="stylesheet" href="./ChatBot.css" />
+	</head>
+	<body>
+		<h1><b>Chat Bot</b></h1>
+		<p>
+			Our AI adapts to your learning style, ensuring a
+			personalized experience.
+		</p>
+		<div class="container">
+			<div class="chat-container">
+				<div class="history hidden"></div>
+
+				<div class="output-field" id="output">
+					<div
+						class="text-field"
+						id="textOutput"
+					></div>
+					<div
+						class="image-field"
+						id="imageOutput"
+					></div>
+				</div>
+			</div>
+            <div class="roadmap" id="roadmapOutput">
+                
+            </div>
+		</div>
+		<div class="input-field">
+			<input
+				class="userInput"
+				type="text"
+				id="prompt"
+				placeholder="Type your message here..."
+			/>
+			<div class="send-icon" id="sendInput">
+				<img
+					src="./crate_11915943.png"
+					alt="Send"
+					class="send-icon"
+				/>
+			</div>
+		</div>
+		<script type="module" src="./ChatBot.js"></script>
+	</body>
+</html>

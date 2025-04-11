@@ -1,0 +1,59 @@
+function formatAIResponse(response) {
+    // Convert Phase headings
+    response = response.replace(/Phase (\d+):/g, '<h3>Phase $1:</h3>');
+
+    // Convert **bold** to <strong>
+    response = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Convert _italic_ to <em>
+    response = response.replace(/_(.*?)_/g, '<em>$1</em>');
+
+    // Convert bullet points
+    response = response.replace(/(^|\n)- (.*?)(?=\n|$)/g, '$1<ul><li>$2</li></ul>');
+
+    // Convert ordered lists
+    response = response.replace(/(^|\n)\d+\.\s(.*?)(?=\n|$)/g, '$1<ol><li>$2</li></ol>');
+
+    // Convert line breaks to <br> for visual spacing
+    response = response.replace(/\n/g, '<br>');
+
+    return response;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const sendInput = document.getElementById("sendInput");
+    sendInput.addEventListener("click", async () => {
+        const response = ""; // existing async code
+        aiTutor(response);
+    });
+});
+
+function aiTutor(response) {
+    const outputBox = document.getElementById("textOutput");
+    if (!outputBox) {
+      console.error("textOutput element not found.");
+      return;
+    }
+    outputBox.innerHTML = formatAIResponse(response);
+}
+
+#textOutput {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow-y: auto;
+    max-height: 300px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.output-field {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 1rem;
+}z
