@@ -139,8 +139,8 @@ document.querySelector('.line-hover-3').addEventListener('mouseleave', () => {
 	circle.classList.remove('dark-circle');
 });
 // document.getElementById('generate-tutor').addEventListener('click', aiTutor);
-const apiKey = 'AIzaSyAgpU5TcQv5lOmI_U_wXlOryGxH5v9swDI'; // Replace this with your Gemini API key
-const youtubeApiKey = 'AIzaSyC-cfIjxZZhpwSCU5CaXsuwPRlxgj0dCxE'; // Replace with your YouTube API key
+const apiKey = ''; // Replace this with your Gemini API key
+const youtubeApiKey = ''; // Replace with your YouTube API key
 // Function to call Gemini API and get content based on the prompt
 async function getAIResponse(prompt) {
     try {
