@@ -4,7 +4,7 @@ let currentQuizTopic = '';
 
 document.getElementById('generate-tutor').addEventListener('click', aiTutor);
 
-const apiKey = 'AIzaSyAgpU5TcQv5lOmI_U_wXlOryGxH5v9swDI'; // Replace with your Gemini API key
+const apiKey = ''; // Replace with your Gemini API key
 
 async function getAIResponse(prompt) {
     try {
