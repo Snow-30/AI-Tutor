@@ -3,8 +3,8 @@ if (inputValue) {
     console.log(inputValue);
 }
 
-const apiKey = 'AIzaSyAgpU5TcQv5lOmI_U_wXlOryGxH5v9swDI'; // Replace this with your Gemini API key
-const youtubeApiKey = 'AIzaSyDR4WRVN9Rv0p6oMpNCQ7NfYPvAcPuxDFs'; // Replace with your YouTube API key
+const apiKey = ''; // Replace this with your Gemini API key
+const youtubeApiKey = ''; // Replace with your YouTube API key
 
 // Function to format AI response for better readability
 function formatAIResponse(response) {
